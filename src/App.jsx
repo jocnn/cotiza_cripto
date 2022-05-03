@@ -1,5 +1,7 @@
 import ImagenCripto from './img/imagen-criptos.png'
 
+import Formulario from './components/Formulario'
+
 function App() {
 
   return (
@@ -13,6 +15,7 @@ function App() {
           Cotiza Criptomonedas al Instante
           <div className='content-none w-[100px] h-[6px] bg-sky-600 block mt-0 mx-auto mb-0'></div>
         </h1>
+        <Formulario />
       </div>
     </div>
   )
