@@ -8,7 +8,8 @@ const Formulario = () => {
 
   const [ criptos, setCriptos ] = useState([])
 
-  const [ state, SelectMoneda ] = useSelectMonedas('Elige tu divisa', divisas )
+  const [ stateDivisa, SelectDivisa ] = useSelectMonedas('Elige tu divisa', divisas )
+  const [ stateCripto, SelectCripto ] = useSelectMonedas('Elige tu criptomoneda', criptos )
 
   useEffect(() => {
     
@@ -38,16 +39,15 @@ const Formulario = () => {
     <>
       <form>
 
-        <SelectMoneda />
-
-        { state }
+        <SelectDivisa />
+        <SelectCripto />
 
         <input
           className="
           bg-[#9497FF] border-none w-[100%] p-[10px] 
           text-white font-bold uppercase text-xl 
             rounded hover:bg-[#7A7DFE] transition-colors 
-            duration-[3000] ease-in cursor-pointer"
+            duration-[3000] ease-in cursor-pointer mt-3"
           type="submit" 
           value="Cotizar" />
       </form>
