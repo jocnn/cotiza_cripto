@@ -1,10 +1,38 @@
+import { useState, useEffect } from 'react'
+
 import useSelectMonedas from "../hooks/useSelectMonedas"
 
 import { divisas } from "../data/monedas"
 
 const Formulario = () => {
 
+  const [ criptos, setCriptos ] = useState([])
+
   const [ state, SelectMoneda ] = useSelectMonedas('Elige tu divisa', divisas )
+
+  useEffect(() => {
+    
+    const consultarAPI = async () => {
+      const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD'
+      const resp = await fetch(url)
+      const result = await resp.json()
+      
+      const arrayCrypto = result.Data.map( cripto => {
+        const obj = {
+          id: cripto.CoinInfo.Name,
+          nombre: cripto.CoinInfo.FullName
+        }
+
+        return obj
+      })
+      
+      setCriptos(arrayCrypto)
+      
+    }
+
+    consultarAPI()
+
+  }, [])
 
   return (
     <>
