@@ -4,16 +4,15 @@ import { divisas } from "../data/monedas"
 
 const Formulario = () => {
 
-
-
-  const [ SelectMoneda ] = useSelectMonedas('Elige tu divisa', divisas )
-
+  const [ state, SelectMoneda ] = useSelectMonedas('Elige tu divisa', divisas )
 
   return (
     <>
       <form>
 
         <SelectMoneda />
+
+        { state }
 
         <input
           className="
