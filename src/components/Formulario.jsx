@@ -1,7 +1,20 @@
+import useSelectMonedas from "../hooks/useSelectMonedas"
+
+import { divisas } from "../data/monedas"
+
 const Formulario = () => {
+
+
+
+  const [ SelectMoneda ] = useSelectMonedas('Elige tu divisa', divisas )
+
+
   return (
     <>
       <form>
+
+        <SelectMoneda />
+
         <input
           className="
           bg-[#9497FF] border-none w-[100%] p-[10px] 
