@@ -7,10 +7,22 @@ import Formulario from './components/Formulario'
 function App() {
 
   const [ monedas, setMonedas ] = useState({})
+  const [ resultado, setResultado ] = useState({})
 
   useEffect(() => {
     if ( Object.keys(monedas).length > 0 ) {
-      console.log(monedas)
+      
+      const cotizarCripto = async () => {
+
+        const { stateDivisa, stateCripto } = monedas
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${stateCripto}&tsyms=${stateDivisa}`
+        const resp = await fetch(url)
+        const resul = await resp.json()
+        console.log(resul.DISPLAY[stateCripto][stateDivisa])
+      }
+
+      cotizarCripto()
+      
     }
   }, [ monedas ])
 
