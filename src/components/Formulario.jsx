@@ -4,7 +4,7 @@ import useSelectMonedas from "../hooks/useSelectMonedas"
 import Error from './Error'
 import { divisas } from "../data/monedas"
 
-const Formulario = () => {
+const Formulario = ({ setMonedas }) => {
 
   const [ criptos, setCriptos ] = useState([])
   const [ error, setError ] = useState(false)
@@ -48,7 +48,10 @@ const Formulario = () => {
     }
 
     setError(false)
-
+    setMonedas({
+      stateDivisa,
+      stateCripto
+    })
 
   }
 
