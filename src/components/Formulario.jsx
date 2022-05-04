@@ -39,9 +39,6 @@ const Formulario = ({ setMonedas }) => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    console.log(typeof(stateDivisa))
-    console.log(typeof(stateCripto))
-
     if (typeof(stateDivisa) === 'undefined' || typeof(stateCripto) === 'undefined') {
       setError(true)
       return
