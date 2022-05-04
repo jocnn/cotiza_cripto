@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import ImagenCripto from './img/imagen-criptos.png'
 
 import Formulario from './components/Formulario'
+import Resultado from './components/Resultado'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${stateCripto}&tsyms=${stateDivisa}`
         const resp = await fetch(url)
         const resul = await resp.json()
-        console.log(resul.DISPLAY[stateCripto][stateDivisa])
+        setResultado(resul.DISPLAY[stateCripto][stateDivisa])
       }
 
       cotizarCripto()
@@ -40,6 +41,9 @@ function App() {
         <Formulario 
           setMonedas={setMonedas}
         />
+        { resultado.PRICE && <Resultado 
+          resultado={resultado}
+        />}
       </div>
     </div>
   )
